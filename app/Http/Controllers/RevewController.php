@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReviewResource;
+
+use App\Model\Product;
+
 use App\Model\Revew;
+
+use App\Http\Controllers\RevewController;
+
 use Illuminate\Http\Request;
 
 class RevewController extends Controller
@@ -12,9 +19,9 @@ class RevewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        //
+        return ReviewResource::collection($product->reviews);
     }
 
     /**
